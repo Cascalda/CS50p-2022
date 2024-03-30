@@ -33,15 +33,15 @@ def get_valid_length(access_key_range: tuple[int, int]) -> int:
         morpheme = morpheme_type.get(caller, None)
 
         try:
-            length = int(input(f"\nEnter length of {morpheme}: "))
+            length = int(input(f"\nEnter length of {morpheme}s: "))
         except ValueError:
-            print("\nOnly integers are accepted.")
+            print("Only integers are accepted.")
             continue
 
         if min_length <= length <= max_length:
             return length
 
-        print("\nInvalid length. Please try again.")
+        print("Invalid length. Please try again.")
 
 
 def get_flags() -> set[str]:
@@ -53,10 +53,10 @@ def get_flags() -> set[str]:
             """
             Press y if u wish to include the following, skipping otherwise:
             - At least 1 condition is required.
-            """
+        """
         )
         for flag in CHARACTERS:
-            include_flag = input(f"\nInclude {flag}? ").lower() == "y"
+            include_flag = input(f">>> Include {flag}? ").lower() == "y"
             if include_flag:
                 flags_included.add(flag)
 
@@ -68,7 +68,7 @@ def get_separator() -> str:
 
     while True:
         separator = (
-            input(f"Enter separator (Defaulted to {DEFAULT_SEPARATOR}): ")
+            input(f">>> Enter separator (Defaulted to {DEFAULT_SEPARATOR}): ")
             or DEFAULT_SEPARATOR
         )
         if len(separator) <= MAX_SEPARATOR_LENGTH:
@@ -122,10 +122,12 @@ def main() -> None:
     """Interface to control all other functions."""
     while True:
         access_key = access_key_generators()
-        print(access_key)
+        print(f"\nThis is your password: {access_key}")
 
         if input("\nGenerate another? (y/n) ").lower() != "y":
             break
+
+    print("\nHave a nice day ahead! 😄")
 
 
 if __name__ == "__main__":
