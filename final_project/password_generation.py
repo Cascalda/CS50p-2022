@@ -46,7 +46,7 @@ def get_valid_length(access_key_range: tuple[int, int]) -> int:
 
 
 def get_character_pool() -> set[str]:
-    """Get valid flags from the user."""
+    """Get character pool(s) to include from the user."""
     flags_included = set()
 
     while not flags_included:
