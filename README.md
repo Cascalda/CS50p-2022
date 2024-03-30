@@ -27,7 +27,7 @@ This repository contains the following:
 7. **Week 6:** [File I/O](pset_6)
 8. **Week 7:** [Regular Expressions](pset_7)
 9. **Week 8:** [Object-Oriented Programming](pset_8)
-10. **Week 9:** [Final Project](pset_9)
+10. **Week 9:** [Final Project](final_project)
 
 Each folder contains the relevant materials and solutions for the corresponding project.
 
