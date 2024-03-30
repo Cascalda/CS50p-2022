@@ -79,7 +79,7 @@ def get_separator() -> str:
 
 
 def get_random_uppercase_flag() -> str:
-    """Get valid flags from the user."""
+    """Get random capitalisation choice from the user."""
     print(
         f"""
         Choose a random capitalisation option:
