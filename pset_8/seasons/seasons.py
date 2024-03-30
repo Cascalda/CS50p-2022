@@ -1,4 +1,4 @@
-"""Convert ISO 8601 formattd dates to words."""
+"""Convert ISO 8601 formatted dates to words."""
 
 from datetime import date
 import sys
@@ -12,15 +12,15 @@ number_to_words = inflect.number_to_words
 def main() -> None:
     """Interface to control all other functions."""
     date_of_birth_input = input("Date of Birth: ")
-    date_of_birth = validify_date_of_birth(date_of_birth_input)
+    date_of_birth = validate_date_of_birth(date_of_birth_input)
 
     age_minutes = calculate_age_in_minutes(date_of_birth)
     result = convert_age_to_words(age_minutes)
     print(result)
 
 
-def validify_date_of_birth(date_of_birth_input: str) -> date:
-    """Validifies the date of birth provided."""
+def validate_date_of_birth(date_of_birth_input: str) -> date:
+    """Validates the date of birth provided."""
     try:
         date_of_birth = date.fromisoformat(date_of_birth_input)
         return date_of_birth

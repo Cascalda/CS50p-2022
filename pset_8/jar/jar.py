@@ -18,7 +18,7 @@ class Jar:
         self._size = 0
 
     def __str__(self):
-        """Returns a string representatio of a jar."""
+        """Returns a string representation of a jar."""
         return self._size * "🍪"
 
     def deposit(self, to_deposit: int) -> None:
