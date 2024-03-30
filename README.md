@@ -19,15 +19,15 @@ CS50p, or CS50 Python, is a collection of projects and assignments completed as 
 This repository contains the following:
 
 1. **Week 0:** [Functions, Variables](pset_0)
-2. **Week 1:** Conditionals [pset_1]
-3. **Week 2:** Loops [pset_2]
-4. **Week 3:** Exceptions [pset_3]
-5. **Week 4:** Libraries [pset_4]
-6. **Week 5:** Unit Tests [pset_5]
-7. **Week 6:** File I/O [pset_6]
-8. **Week 7:** Regular Expressions [pset_7]
-9. **Week 8:** Object-Oriented Programming [pset_8]
-10. **Week 9:** Final Project [pset_9]
+2. **Week 1:** [Conditionals](pset_1)
+3. **Week 2:** [Loops](pset_2)
+4. **Week 3:** [Exceptions](pset_3)
+5. **Week 4:** [Libraries](pset_4)
+6. **Week 5:** [Unit Tests](pset_5)
+7. **Week 6:** [File I/O](pset_6)
+8. **Week 7:** [Regular Expressions](pset_7)
+9. **Week 8:** [Object-Oriented Programming](pset_8)
+10. **Week 9:** [Final Project](pset_9)
 
 Each folder contains the relevant materials and solutions for the corresponding project.
 
