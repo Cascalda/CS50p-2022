@@ -1,11 +1,12 @@
 """Contains the functions that are required for password generation."""
 
-import random
+from random import choice, choices, randint, sample
 from inspect import stack
 from constants import (
     CHARACTERS,
     DEFAULT_SEPARATOR,
     MAX_SEPARATOR_LENGTH,
+    RANDOM_CAPS,
     RANGE_PASSPHRASE_WORDS,
     RANGE_PASSWORD_CHAR,
     WORDS,
@@ -44,7 +45,7 @@ def get_valid_length(access_key_range: tuple[int, int]) -> int:
         print("Invalid length. Please try again.")
 
 
-def get_flags() -> set[str]:
+def get_character_pool() -> set[str]:
     """Get valid flags from the user."""
     flags_included = set()
 
@@ -77,38 +78,91 @@ def get_separator() -> str:
         print(f"Up to {MAX_SEPARATOR_LENGTH} characters are accepted.")
 
 
+def get_random_capitalise_flag() -> str:
+    """Get valid flags from the user."""
+    # print(
+    #     """Choose a random capitalisation option:
+    #     {(i, ) in enumerate(CAPITALISATION)}
+    #     """
+    # )
+    while True:
+        print(f"\nChoices: {', '.join(_ for _ in RANDOM_CAPS)}")
+
+        flag = input("Your choice: ")
+        if flag not in RANDOM_CAPS:
+            print("No such choice. Please try again.")
+            continue
+
+        return flag
+
+
+#     return flags_included
+def randomly_capitalise(word: str, flag: str):
+    """Capitalises a random letter of each word according to the users choice."""
+
+    default = word.lower()
+
+    random_index = randint(0, len(word) - 1)
+    match flag:
+        case "first":
+            return choice((word.capitalize(), default))
+
+        case "last":
+            capitalised_last = word[:-1] + word[-1].upper()
+            return choice((capitalised_last, default))
+
+        case "any-one":
+            capitalised_random = (
+                word[:random_index]
+                + word[random_index].upper()
+                + word[random_index + 1 :]
+            )
+            return capitalised_random
+
+        case "all":
+            return "".join(choice((letter.upper(), letter.lower())) for letter in word)
+
+        case _:
+            return word
+
+
 # ===== Main Functions =====
 def generate_password() -> str:
     """Generates a secure password."""
     length = get_valid_length(RANGE_PASSWORD_CHAR)
-    included_flags = get_flags()
+    included_flags = get_character_pool()
 
     character_pool = "".join(CHARACTERS[flag] for flag in included_flags)
 
     # Used random.choices to allow repetition, which increases unpredictability
-    return "".join(random.choices(character_pool, k=length))
+    return "".join(choices(character_pool, k=length))
 
 
 def generate_passphrase() -> str:
     """Generates a secure passphrase."""
     length = get_valid_length(RANGE_PASSPHRASE_WORDS)
     separator = get_separator()
+    random_capitalise_choice = get_random_capitalise_flag()
 
     # Used random.sample to avoid repeating words,
     # making it harder to be brute-forced, especially for short passphrases
-    return f"{separator}".join(random.sample(WORDS, k=length))
+
+    return separator.join(
+        randomly_capitalise(word, random_capitalise_choice)
+        for word in sample(WORDS, k=length)
+    )
 
 
 def access_key_generators() -> str:
     """Chooses the type of access key the user wants."""
     while True:
         # Prompt "password" instead of "access key" as "password" is more colloquial
-        choice = input("\nPassword or Passphrase: ").lower()
+        flag = input("\nPassword or Passphrase: ").lower()
         match = {
             "password": generate_password,
             "passphrase": generate_passphrase,
         }
-        generator = match.get(choice, None)
+        generator = match.get(flag, None)
 
         if generator is None:
             print("Only 'password' or 'passphrase' are accepted.")
