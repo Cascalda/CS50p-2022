@@ -95,7 +95,7 @@ def get_random_uppercase_flag() -> str:
         return flag
 
 
-def randomly_capitalise(word: str, flag: str):
+def randomly_capitalise(word: str, flag: str) -> str:
     """Capitalises a random letter of each word according to the users choice."""
 
     default = word.lower()
