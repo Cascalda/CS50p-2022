@@ -6,7 +6,7 @@ from constants import (
     CHARACTERS,
     DEFAULT_SEPARATOR,
     MAX_SEPARATOR_LENGTH,
-    RANDOM_CAPS,
+    RANDOM_CAPS_DISPLAY,
     RANGE_PASSPHRASE_WORDS,
     RANGE_PASSWORD_CHAR,
     WORDS,
@@ -78,25 +78,23 @@ def get_separator() -> str:
         print(f"Up to {MAX_SEPARATOR_LENGTH} characters are accepted.")
 
 
-def get_random_capitalise_flag() -> str:
+def get_random_uppercase_flag() -> str:
     """Get valid flags from the user."""
-    # print(
-    #     """Choose a random capitalisation option:
-    #     {(i, ) in enumerate(CAPITALISATION)}
-    #     """
-    # )
+    print(
+        f"""
+        Choose a random capitalisation option:
+        {', '.join(_ for _ in RANDOM_CAPS_DISPLAY)}
+        """
+    )
     while True:
-        print(f"\nChoices: {', '.join(_ for _ in RANDOM_CAPS)}")
-
-        flag = input("Your choice: ")
-        if flag not in RANDOM_CAPS:
+        flag = input("\nYour choice: ")
+        if flag not in RANDOM_CAPS_DISPLAY:
             print("No such choice. Please try again.")
             continue
 
         return flag
 
 
-#     return flags_included
 def randomly_capitalise(word: str, flag: str):
     """Capitalises a random letter of each word according to the users choice."""
 
@@ -142,13 +140,12 @@ def generate_passphrase() -> str:
     """Generates a secure passphrase."""
     length = get_valid_length(RANGE_PASSPHRASE_WORDS)
     separator = get_separator()
-    random_capitalise_choice = get_random_capitalise_flag()
+    random_uppercase_choice = get_random_uppercase_flag()
 
     # Used random.sample to avoid repeating words,
     # making it harder to be brute-forced, especially for short passphrases
-
     return separator.join(
-        randomly_capitalise(word, random_capitalise_choice)
+        randomly_capitalise(word, random_uppercase_choice)
         for word in sample(WORDS, k=length)
     )
 

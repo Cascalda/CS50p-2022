@@ -27,7 +27,7 @@ CHARACTERS: dict[str, str] = {
 }
 
 
-RANDOM_CAPS: dict[str, str] = {
+RANDOM_CAPS_DISPLAY: dict[str, str] = {
     "first": "Uppercap first letter of each word",
     "last": "Uppercap last letter of each word",
     "any-one": "Uppercap any letter",
@@ -35,14 +35,3 @@ RANDOM_CAPS: dict[str, str] = {
 }
 
 WORDS: list[str] = sorted(get_english_words_set(sources=["web2"]))
-
-# no cap
-
-# 1st letter of each word
-# last letter of each word
-# any letter of each word
-
-# 1st word of passphrase
-# last word of passphrase
-# any word of passphrase
-# all words of passphrase
