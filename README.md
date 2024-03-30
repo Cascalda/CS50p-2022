@@ -18,7 +18,7 @@ CS50p, or CS50 Python, is a collection of projects and assignments completed as 
 
 This repository contains the following:
 
-1. **Week 0:** Functions, Variables [pset_0]
+1. **Week 0:** [Functions, Variables] (pset_0)
 2. **Week 1:** Conditionals [pset_1]
 3. **Week 2:** Loops [pset_2]
 4. **Week 3:** Exceptions [pset_3]
