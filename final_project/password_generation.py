@@ -52,7 +52,7 @@ def get_character_pool() -> set[str]:
     while not flags_included:
         print(
             """
-            Press y if u wish to include the following, skipping otherwise:
+            Press 'y' if u wish to include the following, skipping otherwise:
             - At least 1 condition is required.
         """
         )
@@ -69,9 +69,10 @@ def get_separator() -> str:
 
     while True:
         separator = (
-            input(f">>> Enter separator (Defaulted to {DEFAULT_SEPARATOR}): ")
+            input(f">>> Enter separator (Default '{DEFAULT_SEPARATOR}'): ")
             or DEFAULT_SEPARATOR
         )
+
         if len(separator) <= MAX_SEPARATOR_LENGTH:
             return separator
 
@@ -83,24 +84,24 @@ def get_random_uppercase_flag() -> str:
     print(
         f"""
         Choose a random capitalisation option:
-        {', '.join(_ for _ in RANDOM_CAPS_DISPLAY)}
+        {', '.join(RANDOM_CAPS_DISPLAY)}
         """
     )
+
     while True:
         flag = input("\nYour choice: ")
-        if flag not in RANDOM_CAPS_DISPLAY:
-            print("No such choice. Please try again.")
-            continue
+        if flag in RANDOM_CAPS_DISPLAY:
+            return flag
 
-        return flag
+        print("No such choice. Please try again.")
 
 
 def randomly_capitalise(word: str, flag: str) -> str:
     """Capitalises a random letter of each word according to the users choice."""
 
     default = word.lower()
-
     random_index = randint(0, len(word) - 1)
+
     match flag:
         case "first":
             return choice((word.capitalize(), default))
@@ -150,7 +151,7 @@ def generate_passphrase() -> str:
     )
 
 
-def access_key_generators() -> str:
+def get_access_key() -> str:
     """Chooses the type of access key the user wants."""
     while True:
         # Prompt "password" instead of "access key" as "password" is more colloquial
@@ -172,7 +173,7 @@ def access_key_generators() -> str:
 def main() -> None:
     """Interface to control all other functions."""
     while True:
-        access_key = access_key_generators()
+        access_key = get_access_key()
         print(f"\nThis is your password: {access_key}")
 
         if input("\nGenerate another? (y/n) ").lower() != "y":
