@@ -1,20 +1,20 @@
 """Tests fuel.py from pset_3."""
 
-# pylint: disable=C0116
 from fuel import convert, gauge
 import pytest
 
 
+# pylint: disable=C0116
 def test_convert():
-    test_pairs = (
+    fractions_percentages = (
         ("3/7", 43),
         ("3/4", 75),
         ("5/9", 56),
         ("0/41", 0),
         ("91/91", 100),
     )
-    for fraction, answer in test_pairs:
-        assert convert(fraction) == answer
+    for fraction, expected_percentage in fractions_percentages:
+        assert convert(fraction) == expected_percentage
 
     with pytest.raises(ZeroDivisionError):
         convert("51/0")
@@ -23,8 +23,8 @@ def test_convert():
         convert("431/110")
 
 
-def test_gauge():
-    test_pairs = (
+def test_gauge_indicators():
+    percentages_indicators = (
         (0, "E"),
         (1, "E"),
         (99, "F"),
@@ -32,8 +32,9 @@ def test_gauge():
         (45, "45%"),
         (98, "98%"),
     )
-    for percentage, indicator in test_pairs:
-        assert gauge(percentage) == indicator
+
+    for percentage, expected_indicator in percentages_indicators:
+        assert gauge(percentage) == expected_indicator
 
 
 if __name__ == "__main__":
