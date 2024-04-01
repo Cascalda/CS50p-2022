@@ -33,14 +33,13 @@ def num_condition_check(plate_to_check: str) -> bool:
 
     for index, char in enumerate(plate_to_check):
         if char.isdigit():
-            if int(char) == 0:  # first digit is 0
+            if int(char) == 0:  # First digit is 0
                 return False
 
-            return plate_to_check[
-                index:
-            ].isdigit()  # all succeeding characters are digits
+            # All succeeding characters are digits
+            return plate_to_check[index:].isdigit()
 
-    return True  # no digits
+    return True
 
 
 if __name__ == "__main__":
