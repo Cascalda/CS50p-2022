@@ -4,6 +4,9 @@ import string
 
 from english_words import get_english_words_set
 
+MIN_GENERAL_LENGTH: int = 6
+MAX_GENERAL_LENGTH: int = 15
+RANGE_GENERAL_LENGTH: tuple[int, int] = (MIN_GENERAL_LENGTH, MAX_GENERAL_LENGTH)
 
 MIN_PASSWORD_CHAR: int = 8
 MAX_PASSWORD_CHAR: int = 128
@@ -27,11 +30,7 @@ CHARACTERS: dict[str, str] = {
 }
 
 
-RANDOM_CAPS_DISPLAY: dict[str, str] = {
-    "first": "Uppercap first letter of each word",
-    "last": "Uppercap last letter of each word",
-    "any-one": "Uppercap any letter",
-    "all": "Uppercap all words",
-}
+RANDOM_CAPS_DISPLAY: list[str] = ["first", "last", "any-one", "all"]
+
 
 WORDS: list[str] = sorted(get_english_words_set(sources=["web2"]))
