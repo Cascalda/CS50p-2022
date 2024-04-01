@@ -17,7 +17,6 @@ from constants import (
 def get_valid_length(access_key_range: tuple[int, int]) -> int:
     """Obtain a valid length from the user."""
     min_length, max_length = access_key_range
-
     print(
         f"""
           Length must be between {min_length} and {max_length}.
@@ -34,15 +33,20 @@ def get_valid_length(access_key_range: tuple[int, int]) -> int:
         morpheme = morpheme_type.get(caller, None)
 
         try:
-            length = int(input(f"\nEnter length of {morpheme}s: "))
-        except ValueError:
-            print("Only integers are accepted.")
-            continue
+            length = input(f"\nEnter length of {morpheme}s: ")
+            if not length.isdigit():
+                raise ValueError("Only integers accepted. Please try again.")
 
-        if min_length <= length <= max_length:
+            length = int(length)
+
+            if length < min_length or length > max_length:
+                raise ValueError("Invalid length. Please try again.")
+
             return length
 
-        print("Invalid length. Please try again.")
+        except ValueError as e:
+            print(e)
+            continue
 
 
 def get_character_pool() -> set[str]:
