@@ -104,7 +104,6 @@ def randomly_capitalise(word: str, flag: str) -> str:
     """Capitalises a random letter of each word according to the users choice."""
 
     default = word.lower()
-    random_index = randint(0, len(word) - 1)
 
     match flag:
         case "first":
@@ -115,6 +114,8 @@ def randomly_capitalise(word: str, flag: str) -> str:
             return choice((capitalised_last, default))
 
         case "any-one":
+            random_index = randint(0, len(word) - 1)
+
             capitalised_random = (
                 word[:random_index]
                 + word[random_index].upper()
