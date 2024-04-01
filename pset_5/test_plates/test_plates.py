@@ -1,9 +1,9 @@
 """Tests plates.py from pset_2."""
 
-# pylint: disable=C0116
 from plates import is_valid
 import pytest
 
+# pylint: disable=C0116
 test_data = [
     (
         "alphabet",
