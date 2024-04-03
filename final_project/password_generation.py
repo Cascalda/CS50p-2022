@@ -14,9 +14,23 @@ from constants import (
 
 
 # ===== Helper Functions =====
+def validate_length(length_input: str, min_length: int, max_length: int) -> int:
+    """Validates the length provided."""
+    if not length_input.isdigit():
+        raise ValueError("Only integers accepted. Please try again.")
+
+    length = int(length_input)
+
+    if length < min_length or length > max_length:
+        raise ValueError("Invalid length. Please try again.")
+
+    return length
+
+
 def get_valid_length(access_key_range: tuple[int, int]) -> int:
     """Obtain a valid length from the user."""
     min_length, max_length = access_key_range
+
     print(
         f"""
           Length must be between {min_length} and {max_length}.
@@ -34,15 +48,7 @@ def get_valid_length(access_key_range: tuple[int, int]) -> int:
 
         try:
             length = input(f"\nEnter length of {morpheme}s: ")
-            if not length.isdigit():
-                raise ValueError("Only integers accepted. Please try again.")
-
-            length = int(length)
-
-            if length < min_length or length > max_length:
-                raise ValueError("Invalid length. Please try again.")
-
-            return length
+            return validate_length(length, min_length, max_length)
 
         except ValueError as e:
             print(e)
@@ -177,6 +183,7 @@ def get_access_key() -> str:
 # ===== Entry Point =====
 def main() -> None:
     """Interface to control all other functions."""
+    print("\nHello, and welcome to the Password Generator! 🔑\n")
     while True:
         access_key = get_access_key()
         print(f"\nThis is your password: {access_key}")
