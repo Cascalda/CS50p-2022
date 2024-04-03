@@ -4,9 +4,9 @@ import string
 
 from english_words import get_english_words_set
 
-MIN_GENERAL_LENGTH: int = 6
-MAX_GENERAL_LENGTH: int = 15
-RANGE_GENERAL_LENGTH: tuple[int, int] = (MIN_GENERAL_LENGTH, MAX_GENERAL_LENGTH)
+MIN_LENGTH: int = 6
+MAX_LENGTH: int = 15
+RANGE_LENGTH: tuple[int, int] = (MIN_LENGTH, MAX_LENGTH)
 
 MIN_PASSWORD_CHAR: int = 8
 MAX_PASSWORD_CHAR: int = 128
