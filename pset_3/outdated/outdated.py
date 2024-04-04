@@ -25,8 +25,9 @@ def date_middle_endian_to_big_endian(date: str) -> str:
     elif "," in date:
         month_day, year = date.split(",")
         month, day = month_day.split()
-        month = accepted_months.get(month, RuntimeError("Invalid month"))
-
+        month = accepted_months.get(month)
+        if not month:
+            raise RuntimeError("Invalid month")
     else:
         raise RuntimeError("Invalid Delimiters")
 
