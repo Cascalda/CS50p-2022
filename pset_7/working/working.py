@@ -3,8 +3,8 @@
 import re
 
 TIME_SEPARATOR = "to"
-TIME_MATCH = r"""([1-9]|1[0-2]):?([0-5][0-9])? (AM|PM)"""
-TIME_INPUT_MATCH = f"{TIME_MATCH} {TIME_SEPARATOR} {TIME_MATCH}"
+TIME_REGEX = r"([1-9]|1[0-2]):?([0-5][0-9])? (AM|PM)"
+SEPARATOR_REGEX = rf"(.*)\s{TIME_SEPARATOR}\s(.*)"
 
 
 def main() -> str:
@@ -14,25 +14,36 @@ def main() -> str:
     return result
 
 
-def convert(time: str) -> str:
-    """Converts 12-hour time to 24-hour time."""
-    if match := re.fullmatch(TIME_INPUT_MATCH, time):
-        time_from = format_24_hour(
-            match.group(3), int(match.group(1)), int(match.group(2))
-        )
-        time_to = format_24_hour(
-            match.group(6), int(match.group(4)), int(match.group(5))
-        )
-        result = f"{time_from} {TIME_SEPARATOR} {time_to}"
-        return result
+def extract_time_groups(time: str):
+    """Returns the time components as arguments based on given regex."""
+    match = re.fullmatch(TIME_REGEX, time)
+    if not match:
+        raise ValueError("Invalid time format")
 
-    raise ValueError
+    return {
+        "hour": int(match.group(1)),
+        "minute": int(match.group(2) or 0),  # Minute is optionally provided
+        "meridiem": match.group(3),
+    }
+
+
+def convert(duration: str) -> str:
+    """Converts 12-hour time to 24-hour time."""
+
+    match = re.fullmatch(SEPARATOR_REGEX, duration)
+    if not match:
+        raise ValueError("Invalid duration format")
+
+    time_from_groups, time_to_groups = match.groups()
+
+    time_from = format_24_hour(**extract_time_groups(time_from_groups))
+    time_to = format_24_hour(**extract_time_groups(time_to_groups))
+
+    return f"{time_from} {TIME_SEPARATOR} {time_to}"
 
 
 def format_24_hour(meridiem: str, hour: int, minute: int = 0) -> str:
     """Formats time to 24-hour from 12-hour."""
-    # hour = int(hour)
-    # minute = int(minute) if minute else 0
 
     if meridiem == "PM" and hour != 12:
         hour = (hour + 12) % 24
