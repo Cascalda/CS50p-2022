@@ -1,11 +1,6 @@
 """Convert ISO 8601 formatted dates to words."""
 
 
-def main() -> None:
-    """Interface to control all other functions."""
-    Jar()
-
-
 class Jar:
     """A class representing a jar with a given capacity."""
 
@@ -58,6 +53,11 @@ class Jar:
             raise ValueError("Size must be non-negative integer smaller than capacity.")
 
         self._size = size_value
+
+
+def main() -> None:
+    """Interface to control all other functions."""
+    Jar()
 
 
 if __name__ == "__main__":

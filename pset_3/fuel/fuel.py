@@ -1,25 +1,6 @@
 """Gives fuel gauge fractions in percents."""
 
 
-def main() -> None:
-    """Interface to control all other functions."""
-
-    while True:
-        obtained_fuel_gauge = input("Fraction: ")
-
-        try:
-            calculated_percentage = convert(obtained_fuel_gauge)
-        except ValueError:
-            print("Only fractions are accepted")
-        except (ZeroDivisionError, RuntimeError) as e:
-            print(e)
-        else:
-            break
-
-    result = gauge(int(calculated_percentage))
-    print(result)
-
-
 def convert(fraction: str) -> float:
     """Converts fuel gauge to percentages."""
 
@@ -43,6 +24,25 @@ def gauge(percentage: int) -> str:
         return "F"
 
     return f"{percentage:.0f}%"
+
+
+def main() -> None:
+    """Interface to control all other functions."""
+
+    while True:
+        obtained_fuel_gauge = input("Fraction: ")
+
+        try:
+            calculated_percentage = convert(obtained_fuel_gauge)
+        except ValueError:
+            print("Only fractions are accepted")
+        except (ZeroDivisionError, RuntimeError) as e:
+            print(e)
+        else:
+            break
+
+    result = gauge(int(calculated_percentage))
+    print(result)
 
 
 if __name__ == "__main__":

@@ -1,21 +1,6 @@
 """Computes immediate cost given order."""
 
 
-def main() -> None:
-    """Interface to control all other functions."""
-    total_cost = 0
-
-    while True:
-        try:
-            order = input("Item: ").title()
-            total_cost += order_payment(order)
-
-            print(f"Total: ${total_cost:.2f}")
-        except EOFError:
-            print(total_cost)
-            break
-
-
 def order_payment(order_obtained) -> float:
     """Gets all the total of the order."""
     taqueria_menu = {
@@ -31,6 +16,21 @@ def order_payment(order_obtained) -> float:
     }
 
     return taqueria_menu.get(order_obtained, 0.0)
+
+
+def main() -> None:
+    """Interface to control all other functions."""
+    total_cost = 0
+
+    while True:
+        try:
+            order = input("Item: ").title()
+            total_cost += order_payment(order)
+
+            print(f"Total: ${total_cost:.2f}")
+        except EOFError:
+            print(total_cost)
+            break
 
 
 if __name__ == "__main__":

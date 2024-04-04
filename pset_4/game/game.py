@@ -3,13 +3,6 @@
 from random import randint
 
 
-def main() -> None:
-    """Interface to control all other functions."""
-    my_start = 1
-    random_num = randint(my_start, get_level())
-    guessing(random_num)
-
-
 def get_level() -> int:
     """Gets the maximum of the range."""
     while True:
@@ -44,6 +37,13 @@ def isvalid(user_input) -> int:
         return False
 
     return True
+
+
+def main() -> None:
+    """Interface to control all other functions."""
+    my_start = 1
+    random_num = randint(my_start, get_level())
+    guessing(random_num)
 
 
 if __name__ == "__main__":

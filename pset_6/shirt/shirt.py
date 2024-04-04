@@ -4,18 +4,6 @@ from sys import argv, exit as sys_exit
 from PIL import Image, ImageOps
 
 
-def main() -> None:
-    """Interface to control all other functions."""
-    format_check()
-
-    try:
-        _, input_file, output_file = argv[:3]
-    except FileNotFoundError:
-        sys_exit("File does not exist")
-
-    put_shirt_on(input_file, output_file)
-
-
 def format_check() -> None:
     """Check the format of command line."""
     length_check()
@@ -54,6 +42,18 @@ def put_shirt_on(file_in: str, file_out: str) -> None:
         in_edit = ImageOps.fit(background, overlay.size)
         in_edit.paste(overlay, mask=overlay)
         in_edit.save(file_out)
+
+
+def main() -> None:
+    """Interface to control all other functions."""
+    format_check()
+
+    try:
+        _, input_file, output_file = argv[:3]
+    except FileNotFoundError:
+        sys_exit("File does not exist")
+
+    put_shirt_on(input_file, output_file)
 
 
 if __name__ == "__main__":

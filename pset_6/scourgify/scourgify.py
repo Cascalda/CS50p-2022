@@ -4,18 +4,6 @@ from sys import argv, exit as sys_exit
 from csv import DictReader, DictWriter
 
 
-def main() -> None:
-    """Interface to control all other functions."""
-    format_check()
-
-    try:
-        _, input_file, output_file = argv[:3]
-    except FileNotFoundError:
-        sys_exit("File does not exist")
-
-    scourgify(input_file, output_file)
-
-
 def format_check() -> None:
     """Check the format of command line."""
     desired_arg_num = 3
@@ -54,6 +42,18 @@ def scourgify(file_in: str, file_out: str) -> None:
                     "house": house,
                 }
             )
+
+
+def main() -> None:
+    """Interface to control all other functions."""
+    format_check()
+
+    try:
+        _, input_file, output_file = argv[:3]
+    except FileNotFoundError:
+        sys_exit("File does not exist")
+
+    scourgify(input_file, output_file)
 
 
 if __name__ == "__main__":

@@ -1,20 +1,11 @@
 """Use pyfiglet to make fonts."""
+
 import sys
 import random
 
 from pyfiglet import Figlet
 
 figlet = Figlet()
-
-
-def main() -> None:
-    """Interface to control all other functions."""
-    try:
-        font_converter()
-        text = input("Input: ")
-        print(figlet.renderText(text))
-    except RuntimeError:
-        sys.exit("Only empty prompt or prompt with -f or --font is accepted")
 
 
 def font_converter() -> None:
@@ -37,6 +28,16 @@ def font_converter() -> None:
 
         else:
             raise RuntimeError
+
+
+def main() -> None:
+    """Interface to control all other functions."""
+    try:
+        font_converter()
+        text = input("Input: ")
+        print(figlet.renderText(text))
+    except RuntimeError:
+        sys.exit("Only empty prompt or prompt with -f or --font is accepted")
 
 
 if __name__ == "__main__":

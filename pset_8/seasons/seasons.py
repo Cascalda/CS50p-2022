@@ -9,16 +9,6 @@ inflect = inflect.engine()
 number_to_words = inflect.number_to_words
 
 
-def main() -> None:
-    """Interface to control all other functions."""
-    date_of_birth_input = input("Date of Birth: ")
-    date_of_birth = validate_date_of_birth(date_of_birth_input)
-
-    age_minutes = calculate_age_in_minutes(date_of_birth)
-    result = convert_age_to_words(age_minutes)
-    print(result)
-
-
 def validate_date_of_birth(date_of_birth_input: str) -> date:
     """Validates the date of birth provided."""
     try:
@@ -43,6 +33,16 @@ def convert_age_to_words(age_minutes: int) -> str:
     result = f"{display_age_minutes} minutes"
 
     return result
+
+
+def main() -> None:
+    """Interface to control all other functions."""
+    date_of_birth_input = input("Date of Birth: ")
+    date_of_birth = validate_date_of_birth(date_of_birth_input)
+
+    age_minutes = calculate_age_in_minutes(date_of_birth)
+    result = convert_age_to_words(age_minutes)
+    print(result)
 
 
 if __name__ == "__main__":

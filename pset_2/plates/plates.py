@@ -1,15 +1,6 @@
 """Vanity Plates and whether they are valid"""
+
 from string import punctuation
-
-
-def main():
-    """Interface to control all other functions"""
-
-    plate = input("Plate: ")
-    if is_valid(plate):
-        print("Valid")
-    else:
-        print("Invalid")
 
 
 def is_valid(plate_char: str) -> bool:
@@ -40,6 +31,16 @@ def num_condition_check(plate_to_check: str) -> bool:
             ].isdigit()  # all succeeding characters are digits
 
     return True  # no digits
+
+
+def main():
+    """Interface to control all other functions"""
+
+    plate = input("Plate: ")
+    if is_valid(plate):
+        print("Valid")
+    else:
+        print("Invalid")
 
 
 if __name__ == "__main__":
