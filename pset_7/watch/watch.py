@@ -3,12 +3,6 @@
 import re
 
 
-def main() -> str | None:
-    """Interface to control all other functions."""
-    line = input("HTML: ")
-    return parse(line)
-
-
 def parse(line: str) -> str | None:
     """Finds the youtube url and gives back the shortened link."""
     if iframe_match := re.search(
@@ -27,6 +21,12 @@ def parse(line: str) -> str | None:
         return f"https://youtu.be/{video_id}"
 
     return None
+
+
+def main() -> str | None:
+    """Interface to control all other functions."""
+    line = input("HTML: ")
+    return parse(line)
 
 
 if __name__ == "__main__":

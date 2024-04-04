@@ -16,21 +16,6 @@ accepted_months = {
 }
 
 
-def main() -> None:
-    """Interface to control all other functions."""
-
-    while True:
-        date_user = input("Date: ").strip()
-
-        try:
-            result = date_middle_endian_to_big_endian(date_user)
-            print(result)
-            break
-
-        except (ValueError, RuntimeError) as e:
-            print(e)
-
-
 def date_middle_endian_to_big_endian(date: str) -> str:
     """Formats American dates to ISO dates."""
     # Extracting day, month, year while checking for format validity
@@ -51,6 +36,21 @@ def date_middle_endian_to_big_endian(date: str) -> str:
 
     # Date formatting
     return f"{year}-{int(month):02d}-{int(day):02d}"
+
+
+def main() -> None:
+    """Interface to control all other functions."""
+
+    while True:
+        date_user = input("Date: ").strip()
+
+        try:
+            result = date_middle_endian_to_big_endian(date_user)
+            print(result)
+            break
+
+        except (ValueError, RuntimeError) as e:
+            print(e)
 
 
 if __name__ == "__main__":

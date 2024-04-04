@@ -1,14 +1,6 @@
 """Gives fuel gauge fractions in percents"""
 
 
-def main() -> None:
-    """Interface to control all other functions"""
-    prompt = input("Fraction: ")
-    percentage = convert(prompt)
-    indication = gauge(percentage)
-    print(indication)
-
-
 def convert(fraction: str) -> int:
     """Converts fuel gauge to percentages"""
     try:
@@ -36,6 +28,14 @@ def gauge(percentage: int) -> str:
         return "F"
 
     return f"{percentage}%"
+
+
+def main() -> None:
+    """Interface to control all other functions"""
+    prompt = input("Fraction: ")
+    percentage = convert(prompt)
+    indication = gauge(percentage)
+    print(indication)
 
 
 if __name__ == "__main__":

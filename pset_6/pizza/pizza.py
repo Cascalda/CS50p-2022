@@ -5,19 +5,6 @@ from sys import argv, exit as sys_exit
 from tabulate import tabulate
 
 
-def main() -> str:
-    """Interface to control all other functions."""
-    format_check()
-
-    try:
-        file = argv[1]
-    except FileNotFoundError:
-        sys_exit("File does not exist")
-
-    pretty_menu = prettify_menu(file)
-    return pretty_menu
-
-
 def format_check() -> None:
     """Check the format of command line."""
     desired_arg_num = 2
@@ -40,6 +27,19 @@ def prettify_menu(file: str) -> str:
         menu = DictReader(csvfile)
         pretty_menu = tabulate(menu, headers="keys", tablefmt="grid")
 
+    return pretty_menu
+
+
+def main() -> str:
+    """Interface to control all other functions."""
+    format_check()
+
+    try:
+        file = argv[1]
+    except FileNotFoundError:
+        sys_exit("File does not exist")
+
+    pretty_menu = prettify_menu(file)
     return pretty_menu
 
 

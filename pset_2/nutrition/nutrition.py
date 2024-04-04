@@ -1,15 +1,6 @@
 """Provides calories of the given fruit"""
 
 
-def main():
-    """Interface to control all other functions"""
-
-    given_fruit = input("Item: ").lower()
-
-    calories = calories_of_fruit(given_fruit)
-    print(calories)
-
-
 def calories_of_fruit(fruit: str) -> int | str:
     """Provides calories of given fruit"""
 
@@ -37,6 +28,15 @@ def calories_of_fruit(fruit: str) -> int | str:
     }
     null_output = ""
     return fruits.get(fruit, null_output)
+
+
+def main():
+    """Interface to control all other functions"""
+
+    given_fruit = input("Item: ").lower()
+
+    calories = calories_of_fruit(given_fruit)
+    print(calories)
 
 
 if __name__ == "__main__":

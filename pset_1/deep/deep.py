@@ -5,6 +5,14 @@
 ANSWERS = ("42", "forty-two", "forty two")
 
 
+def deep_answer(answer: str) -> None:
+    """Provides a thought provoking answer."""
+    if answer in ANSWERS:
+        print("Yes")
+    else:
+        print("No")
+
+
 def main() -> None:
     """Interface to control all other functions."""
     question = """
@@ -14,14 +22,6 @@ def main() -> None:
     """
     user_input = input(question)
     deep_answer(user_input.lower().strip())
-
-
-def deep_answer(answer: str) -> None:
-    """Provides a thought provoking answer."""
-    if answer in ANSWERS:
-        print("Yes")
-    else:
-        print("No")
 
 
 if __name__ == "__main__":

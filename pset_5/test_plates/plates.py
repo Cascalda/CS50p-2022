@@ -3,16 +3,6 @@
 from string import punctuation
 
 
-def main() -> None:
-    """Interface to control all other functions."""
-
-    plate = input("Plate: ")
-    if is_valid(plate):
-        print("Valid")
-    else:
-        print("Invalid")
-
-
 def is_valid(plate_char: str) -> bool:
     """Checks validity of vanity plates."""
 
@@ -40,6 +30,16 @@ def num_condition_check(plate_to_check: str) -> bool:
             return plate_to_check[index:].isdigit()
 
     return True
+
+
+def main() -> None:
+    """Interface to control all other functions."""
+
+    plate = input("Plate: ")
+    if is_valid(plate):
+        print("Valid")
+    else:
+        print("Invalid")
 
 
 if __name__ == "__main__":

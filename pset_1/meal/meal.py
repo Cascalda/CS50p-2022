@@ -1,16 +1,6 @@
 """Meal Time."""
 
 
-def main() -> None:
-    """Interface to control all other functions"""
-
-    user_input = input("What time is it? ")
-    hours = convert(user_input)
-
-    results = meal_time_teller(int(hours))
-    print(results)
-
-
 def convert(time: str) -> float:
     "Converts time to hours."
 
@@ -35,6 +25,16 @@ def meal_time_teller(hour: int) -> str | None:
     }
 
     return meal_to_eat.get(True)
+
+
+def main() -> None:
+    """Interface to control all other functions"""
+
+    user_input = input("What time is it? ")
+    hours = convert(user_input)
+
+    results = meal_time_teller(int(hours))
+    print(results)
 
 
 if __name__ == "__main__":

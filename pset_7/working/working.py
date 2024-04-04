@@ -7,13 +7,6 @@ TIME_REGEX = r"([1-9]|1[0-2]):?([0-5][0-9])? (AM|PM)"
 SEPARATOR_REGEX = rf"(.*)\s{TIME_SEPARATOR}\s(.*)"
 
 
-def main() -> str:
-    """Interface to control all other functions."""
-    time_12_hour = input("Hours: ")
-    result = convert(time_12_hour)
-    return result
-
-
 def extract_time_groups(time: str):
     """Returns the time components as arguments based on given regex."""
     match = re.fullmatch(TIME_REGEX, time)
@@ -51,6 +44,13 @@ def format_24_hour(meridiem: str, hour: int, minute: int = 0) -> str:
         hour = 0
 
     result = f"{hour:02d}:{minute:02d}"
+    return result
+
+
+def main() -> str:
+    """Interface to control all other functions."""
+    time_12_hour = input("Hours: ")
+    result = convert(time_12_hour)
     return result
 
 

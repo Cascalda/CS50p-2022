@@ -3,19 +3,6 @@
 from sys import argv, exit as sys_exit
 
 
-def main() -> int:
-    """Interface to control all other functions."""
-    format_check()
-
-    try:
-        file = argv[1]
-    except FileNotFoundError:
-        sys_exit("File does not exist")
-
-    num_lines = get_lines(file)
-    return num_lines
-
-
 def format_check() -> None:
     """Check the format of command line."""
     desired_arg_num = 2
@@ -48,6 +35,19 @@ def get_lines(file: str) -> int:
                 lines_total -= 1
 
         return lines_total
+
+
+def main() -> int:
+    """Interface to control all other functions."""
+    format_check()
+
+    try:
+        file = argv[1]
+    except FileNotFoundError:
+        sys_exit("File does not exist")
+
+    num_lines = get_lines(file)
+    return num_lines
 
 
 if __name__ == "__main__":

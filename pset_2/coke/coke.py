@@ -1,13 +1,6 @@
 """Provides the due or owed amount according to coins given."""
 
 
-def main() -> None:
-    """Interface to control all other functions."""
-
-    result = coke_machine()
-    print(result)
-
-
 def coke_machine() -> str:
     """Tells you amount due until you paid at least 50 cents."""
 
@@ -24,6 +17,13 @@ def coke_machine() -> str:
 
     change_owed = -amount_due
     return f"Change Owed: {change_owed}"
+
+
+def main() -> None:
+    """Interface to control all other functions."""
+
+    result = coke_machine()
+    print(result)
 
 
 if __name__ == "__main__":

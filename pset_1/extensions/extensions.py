@@ -1,16 +1,6 @@
 """Provides the desciption of the file extension."""
 
 
-def main() -> None:
-    """Interface to control all other functions."""
-    user_input = input("File name: ")
-    *_, extension = user_input.strip().split(".")
-    cleansed_input = extension.lower()
-
-    results = extension_descriptor(cleansed_input)
-    print(results)
-
-
 def extension_descriptor(file_extension: str) -> str:
     """Provides short description of file type given its extension."""
     match file_extension:
@@ -28,6 +18,16 @@ def extension_descriptor(file_extension: str) -> str:
 
         case _:
             return "application/octet-stream"
+
+
+def main() -> None:
+    """Interface to control all other functions."""
+    user_input = input("File name: ")
+    *_, extension = user_input.strip().split(".")
+    cleansed_input = extension.lower()
+
+    results = extension_descriptor(cleansed_input)
+    print(results)
 
 
 if __name__ == "__main__":

@@ -3,13 +3,6 @@
 import re
 
 
-def main() -> bool:
-    """Interface to control all other functions."""
-    ip_address = input("IPv4 Address: ")
-    result = validate(ip_address)
-    return result
-
-
 def validate(ip_address: str) -> bool:
     """Validate IPv4 address."""
     octets = ip_address.split(".")
@@ -30,6 +23,13 @@ def validate(ip_address: str) -> bool:
             return False
 
     return True
+
+
+def main() -> bool:
+    """Interface to control all other functions."""
+    ip_address = input("IPv4 Address: ")
+    result = validate(ip_address)
+    return result
 
 
 if __name__ == "__main__":
