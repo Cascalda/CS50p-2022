@@ -1,8 +1,9 @@
 """Validate proper emails."""
+
 import validators
 
 
-def main() -> None:
+def validate_email() -> None:
     """Interface to control all other functions."""
     given_email = input("Whats your email address? ")
     if validators.email(given_email):
@@ -12,4 +13,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    validate_email()
