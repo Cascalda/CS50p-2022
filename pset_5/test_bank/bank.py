@@ -8,8 +8,8 @@ def value(greeting: str) -> int:
         return 0
     if greeting.startswith("h"):
         return 20
-    else:
-        return 100
+
+    return 100
 
 
 def main() -> None:
