@@ -10,7 +10,7 @@ def get_level() -> int:
             return int(level)
 
 
-def guessing(random_num) -> None:
+def guessing(random_num: int) -> None:
     """Guides the user to guessing the correct number."""
     print("Guesses accept integers only.")
 
@@ -29,7 +29,7 @@ def guessing(random_num) -> None:
             print("Too large!")
 
 
-def isvalid(user_input) -> int:
+def isvalid(user_input: str) -> int:
     """Checks for validity of user input."""
     if not user_input.isnumeric():
         return False
