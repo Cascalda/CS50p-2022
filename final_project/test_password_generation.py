@@ -7,7 +7,9 @@ from constants import MIN_LENGTH, MAX_LENGTH, WORDS
 from password_generation import validate_length
 
 
-# pylint: disable=C0116
+# pylint: disable=missing-function-docstring
+
+
 # ===== Helper Functions Tests =====
 @pytest.mark.parametrize("length", (str(_) for _ in range(MIN_LENGTH, MAX_LENGTH + 1)))
 def test_validate_length_within_range(length):

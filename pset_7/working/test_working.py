@@ -1,6 +1,5 @@
 """Tests working.py."""
 
-# pylint: disable=C0116
 from working import convert
 import pytest
 
@@ -26,6 +25,8 @@ invalid_cases = [
     ),
 ]
 
+
+# pylint: disable=missing-function-docstring
 
 @pytest.mark.parametrize("testcase, expected_result", valid_cases)
 def test_valid_cases(testcase, expected_result):

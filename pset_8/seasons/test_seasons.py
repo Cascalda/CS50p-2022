@@ -1,6 +1,5 @@
 """Tests seasons.py."""
 
-# pylint: disable=C0116
 from seasons import convert_age_to_words
 import pytest
 
@@ -10,6 +9,8 @@ testcases = [
     ("1010101", "One million, ten thousand, one hundred one minutes"),
     ("66666", "Sixty-six thousand, six hundred sixty-six minutes"),
 ]
+
+# pylint: disable=missing-function-docstring
 
 
 @pytest.mark.parametrize("input_text, expected_result", testcases)
