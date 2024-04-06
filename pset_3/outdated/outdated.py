@@ -1,6 +1,6 @@
 """Changes middle endian dates to big endian dates."""
 
-accepted_months = {
+ACCEPTED_MONTHS = {
     "January": "1",
     "February": "2",
     "March": "3",
@@ -25,15 +25,15 @@ def date_middle_endian_to_big_endian(date: str) -> str:
     elif "," in date:
         month_day, year = date.split(",")
         month, day = month_day.split()
-        month = accepted_months.get(month)
+        month = ACCEPTED_MONTHS.get(month)
         if not month:
-            raise RuntimeError("Invalid month")
+            raise RuntimeError("Invalid Month")
     else:
         raise RuntimeError("Invalid Delimiters")
 
     # Checking for date validity
     if int(day) >= 31 or int(month) > 12:
-        raise RuntimeError("Invalid date")
+        raise RuntimeError("Invalid Date")
 
     # Date formatting
     return f"{year}-{int(month):02d}-{int(day):02d}"
