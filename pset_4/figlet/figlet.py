@@ -19,11 +19,13 @@ def font_converter() -> None:
     else:
         prompt, type_ = font_command
 
-        if (
-            (len(font_command) == 2)
-            and (prompt in ("-f", "--font"))
-            and (type_ in figlet.getFonts())
-        ):
+        command_checks = {
+            "Length": len(font_command) == 2,
+            "Prompt": prompt in ("-f", "--font"),
+            "Font": type_ in figlet.getFonts(),
+        }
+
+        if all(command_checks.values()):
             figlet.setFont(font=type_)
 
         else:
