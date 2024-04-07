@@ -1,7 +1,8 @@
 """Contains the functions that are required for password generation."""
 
-from random import choice, choices, randint, sample
 from inspect import stack
+from random import choice, choices, randint, sample
+
 from constants import (
     CHARACTERS,
     DEFAULT_SEPARATOR,
@@ -11,6 +12,33 @@ from constants import (
     RANGE_PASSWORD_CHAR,
     WORDS,
 )
+
+
+# ===== Custom Exceptions =====
+class QuitCommand(Exception):
+    """Exception raised when the quit command is detected."""
+
+
+# ===== Wrappers =====
+def handle_quit(func):
+    """Wrapper for input() that exits when user gives the right commands."""
+
+    def wrapper(*args, **kwargs):
+        command = func(*args, **kwargs).lower().strip()
+
+        quit_commands = ["quit", "exit"]
+        if command in quit_commands:
+            raise QuitCommand
+
+        return command
+
+    return wrapper
+
+
+@handle_quit
+def my_input(prompt="") -> str:
+    """Exits when user gives the right commands."""
+    return input(prompt)
 
 
 # ===== Helper Functions =====
@@ -47,7 +75,7 @@ def get_valid_length(access_key_range: tuple[int, int]) -> int:
         morpheme = morpheme_type.get(caller, None)
 
         try:
-            length = input(f"\nEnter length of {morpheme}s: ")
+            length = my_input(f"\nEnter length of {morpheme}s: ")
             return validate_length(length, min_length, max_length)
 
         except ValueError as e:
@@ -67,7 +95,7 @@ def get_character_pool() -> set[str]:
         """
         )
         for flag in CHARACTERS:
-            include_flag = input(f">>> Include {flag}? ").lower() == "y"
+            include_flag = my_input(f">>> Include {flag}? ").lower() == "y"
             if include_flag:
                 flags_included.add(flag)
 
@@ -79,7 +107,7 @@ def get_separator() -> str:
 
     while True:
         separator = (
-            input(f">>> Enter separator (Default '{DEFAULT_SEPARATOR}'): ")
+            my_input(f">>> Enter separator (Default '{DEFAULT_SEPARATOR}'): ")
             or DEFAULT_SEPARATOR
         )
 
@@ -99,7 +127,7 @@ def get_random_uppercase_flag() -> str:
     )
 
     while True:
-        flag = input("\nYour choice: ")
+        flag = my_input("\nYour choice: ")
         if flag in RANDOM_CAPS_DISPLAY:
             return flag
 
@@ -166,7 +194,7 @@ def get_access_key() -> str:
     """Chooses the type of access key the user wants."""
     while True:
         # Prompt "password" instead of "access key" as "password" is more colloquial
-        flag = input("\nPassword or Passphrase: ").lower()
+        flag = my_input("\nPassword or Passphrase: ").lower()
         match = {
             "password": generate_password,
             "passphrase": generate_passphrase,
@@ -181,14 +209,20 @@ def get_access_key() -> str:
 
 
 # ===== Entry Point =====
-def main() -> None:
+def main():
     """Interface to control all other functions."""
     print("\nHello, and welcome to the Password Generator! 🔑\n")
-    while True:
-        access_key = get_access_key()
-        print(f"\nThis is your password: {access_key}")
 
-        if input("\nGenerate another? (y/n) ").lower() != "y":
+    while True:
+        try:
+            access_key = get_access_key()
+            print(f"\nThis is your password: {access_key}")
+
+            if my_input("\nGenerate another? (y/n) ").lower() != "y":
+                break
+
+        except QuitCommand:
+            print("\nExiting Program...")
             break
 
     print("\nHave a nice day ahead! 😄")
