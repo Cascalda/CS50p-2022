@@ -12,15 +12,12 @@ MIN_PASSWORD_CHAR: int = 8
 MAX_PASSWORD_CHAR: int = 128
 RANGE_PASSWORD_CHAR: tuple[int, int] = (MIN_PASSWORD_CHAR, MAX_PASSWORD_CHAR)
 
-
 MIN_PASSPHRASE_WORDS: int = 4
 MAX_PASSPHRASE_WORDS: int = 20
 RANGE_PASSPHRASE_WORDS: tuple[int, int] = (MIN_PASSPHRASE_WORDS, MAX_PASSPHRASE_WORDS)
 
-
 MAX_SEPARATOR_LENGTH: int = 3
 DEFAULT_SEPARATOR: str = "_"
-
 
 CHARACTERS: dict[str, str] = {
     "lowercase": string.ascii_lowercase,
@@ -29,8 +26,6 @@ CHARACTERS: dict[str, str] = {
     "special characters": string.punctuation,
 }
 
-
 RANDOM_CAPS_DISPLAY: list[str] = ["first", "last", "any-one", "all"]
-
 
 WORDS: list[str] = sorted(get_english_words_set(sources=["web2"]))
