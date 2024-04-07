@@ -211,7 +211,9 @@ def get_access_key() -> str:
 # ===== Entry Point =====
 def main():
     """Interface to control all other functions."""
-    print("\nHello, and welcome to the Password Generator! 🔑\n")
+    print("\nHello, and welcome to the Password Generator! 🔑")
+    print(">>> Press 'quit' or 'exit' to exit the program at any point in time!")
+    print()
 
     while True:
         try:
