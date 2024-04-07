@@ -114,7 +114,7 @@ def get_separator() -> str:
         if len(separator) <= MAX_SEPARATOR_LENGTH:
             return separator
 
-        print(f"Up to {MAX_SEPARATOR_LENGTH} characters are accepted.")
+        print(f"\nUp to {MAX_SEPARATOR_LENGTH} characters are accepted.")
 
 
 def get_random_uppercase_flag() -> str:
@@ -196,8 +196,8 @@ def get_access_key() -> str:
         # Prompt "password" instead of "access key" as "password" is more colloquial
         flag = my_input("\nPassword or Passphrase: ").lower()
         match = {
-            "password": generate_password,
-            "passphrase": generate_passphrase,
+            "p": generate_password,
+            "ph": generate_passphrase,
         }
         generator = match.get(flag, None)
 
