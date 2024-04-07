@@ -192,6 +192,12 @@ def generate_passphrase() -> str:
 
 def get_access_key() -> str:
     """Chooses the type of access key the user wants."""
+    print(
+        """
+          Type 'p' for password or 'ph' for passphrase.
+          """
+    )
+
     while True:
         # Prompt "password" instead of "access key" as "password" is more colloquial
         flag = my_input("\nPassword or Passphrase: ").lower()
