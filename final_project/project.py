@@ -1,4 +1,4 @@
-"""Inteface to generate passwords."""
+"""Interface to generate passwords."""
 
 from password_generation import QuitCommand, my_input, get_access_key
 
