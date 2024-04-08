@@ -208,7 +208,7 @@ def get_access_key() -> str:
         generator = match.get(flag, None)
 
         if generator is None:
-            print("Only 'password' or 'passphrase' are accepted.")
+            print("Only 'p' or 'ph' are accepted.")
         else:
             access_key = generator()
             return access_key
