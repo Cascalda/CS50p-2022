@@ -55,5 +55,4 @@ def main() -> str:
 
 
 if __name__ == "__main__":
-    result = main()
-    print(result)
+    print(main())
