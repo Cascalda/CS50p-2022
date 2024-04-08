@@ -55,5 +55,5 @@ def main() -> str:
 
 
 if __name__ == "__main__":
-    RESULT = main()
-    print(RESULT)
+    result = main()
+    print(result)
