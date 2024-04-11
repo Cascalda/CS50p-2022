@@ -1,52 +1,53 @@
 """Calculates the number of lines in a file."""
 
-from sys import argv, exit as sys_exit
+from io import TextIOWrapper
+import sys
+
+FILE_TO_OPEN = sys.argv[1]
+DESIRED_FILE_TYPE = "py"
 
 
-def format_check() -> None:
+def format_check(file) -> None:
     """Check the format of command line."""
     desired_arg_num = 2
 
-    if len(argv) < desired_arg_num:
-        sys_exit("Too few command-line arguments")
-    elif len(argv) > desired_arg_num:
-        sys_exit("Too many command-line arguments")
+    if len(sys.argv) < desired_arg_num:
+        sys.exit("Too few command-line arguments")
+    elif len(sys.argv) > desired_arg_num:
+        sys.exit("Too many command-line arguments")
 
-    file_to_open = argv[1]
-    desired_file_type = "py"
-
-    if not file_to_open.endswith(f".{desired_file_type}"):
-        sys_exit(f"Not a csv file. Perhaps missing '.{desired_file_type}'?")
+    if not file.endswith(f".{DESIRED_FILE_TYPE}"):
+        sys.exit(f"Not a Python file. Perhaps missing '.{DESIRED_FILE_TYPE}'?")
 
 
-def get_lines(file: str) -> int:
+def is_empty_line(line):
+    """Checks if the line given is empty."""
+    empty_line_condition = (not line, line.startswith("#"))
+    return any(empty_line_condition)
+
+
+def get_lines(file: TextIOWrapper) -> int:
     """Get the number of lines in a file."""
+    lines = [_.strip(" \n") for _ in file.readlines()]
+    lines_total = len(lines)
 
-    def is_empty_line(line):
-        empty_line_condition = (not line, line.startswith("#"))
-        return any(empty_line_condition)
+    for line in lines:
+        if is_empty_line(line):
+            lines_total -= 1
 
-    with open(file, mode="r", encoding="utf-8") as pyfile:
-        lines = [_.strip(" \n") for _ in pyfile.readlines()]
-        lines_total = len(lines)
-
-        for line in lines:
-            if is_empty_line(line):
-                lines_total -= 1
-
-        return lines_total
+    return lines_total
 
 
 def main() -> int:
     """Interface to control all other functions."""
-    format_check()
+    format_check(FILE_TO_OPEN)
 
     try:
-        file = argv[1]
+        with open(FILE_TO_OPEN, mode="r", encoding="utf-8") as pyfile:
+            num_lines = get_lines(pyfile)
     except FileNotFoundError:
-        sys_exit("File does not exist")
+        sys.exit("File does not exist")
 
-    num_lines = get_lines(file)
     return num_lines
 
 
