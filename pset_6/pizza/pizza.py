@@ -1,45 +1,47 @@
 """Prints out the pretty menu of regular and sicilian pizzas."""
 
 from csv import DictReader
-from sys import argv, exit as sys_exit
+from io import TextIOWrapper
+import sys
+
 from tabulate import tabulate
 
 
-def format_check() -> None:
+FILE_TO_OPEN = sys.argv[1]
+DESIRED_FILE_TYPE = "csv"
+
+
+def format_check(file) -> None:
     """Check the format of command line."""
     desired_arg_num = 2
 
-    if len(argv) < desired_arg_num:
-        sys_exit("Too few command-line arguments")
-    elif len(argv) > desired_arg_num:
-        sys_exit("Too many command-line arguments")
+    if len(sys.argv) < desired_arg_num:
+        sys.exit("Too few command-line arguments")
+    elif len(sys.argv) > desired_arg_num:
+        sys.exit("Too many command-line arguments")
 
-    file_to_open = argv[1]
-    desired_file_type = "csv"
-
-    if not file_to_open.endswith(f".{desired_file_type}"):
-        sys_exit(f"Not a csv file. Perhaps missing '.{desired_file_type}'?")
+    if not file.endswith(f".{DESIRED_FILE_TYPE}"):
+        sys.exit(f"Not a Python file. Perhaps missing '.{DESIRED_FILE_TYPE}'?")
 
 
-def prettify_menu(file: str) -> str:
+def prettify_menu(file: TextIOWrapper) -> str:
     """Make the format of a csv file prettier."""
-    with open(file, mode="r", encoding="utf-8") as csvfile:
-        menu = DictReader(csvfile)
-        pretty_menu = tabulate(menu, headers="keys", tablefmt="grid")
+    menu = DictReader(file)
+    pretty_menu = tabulate(menu, headers="keys", tablefmt="grid")
 
     return pretty_menu
 
 
 def main() -> str:
     """Interface to control all other functions."""
-    format_check()
+    format_check(FILE_TO_OPEN)
 
     try:
-        file = argv[1]
+        with open(FILE_TO_OPEN, mode="r", encoding="utf-8") as csvfile:
+            pretty_menu = prettify_menu(csvfile)
     except FileNotFoundError:
-        sys_exit("File does not exist")
+        sys.exit("File does not exist")
 
-    pretty_menu = prettify_menu(file)
     return pretty_menu
 
 
