@@ -1,20 +1,18 @@
 """Vanity Plates and whether they are valid"""
 
 from string import punctuation
-from collections import OrderedDict
 
 
-def is_valid(plate_char: str) -> bool:
+def is_valid_plate(plate_char: str) -> bool:
     """Checks validity of vanity plates"""
 
-    validity_checks = OrderedDict(
-        [
-            ("Length", 2 <= len(plate_char) <= 6),
-            ("First 2 Characters", plate_char[0:2].isalpha()),
-            ("Special Characters", set(plate_char).isdisjoint(punctuation)),
-            ("Number Conditions", num_condition_check(plate_char)),
-        ]
-    )
+    # Checks validity in this particular order
+    validity_checks = {
+        "Length": 2 <= len(plate_char) <= 6,
+        "First 2 Characters": plate_char[0:2].isalpha(),
+        "Special Characters": set(plate_char).isdisjoint(punctuation),
+        "Number Conditions": num_condition_check(plate_char),
+    }
 
     return all(validity_checks.values())
 
@@ -38,7 +36,7 @@ def main():
     """Interface to control all other functions"""
 
     plate = input("Plate: ")
-    if is_valid(plate):
+    if is_valid_plate(plate):
         print("Valid")
     else:
         print("Invalid")
