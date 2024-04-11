@@ -2,6 +2,14 @@
 
 Welcome to my CS50p repository! This repository contains projects and assignments completed as part of the CS50 Introduction to Programming with Python course.
 
+# 🚫 Academic Honesty Notice
+
+These solutions are provided for educational purposes only. They are not intended to be used or submitted as your own work. Cheating violates the Academic Honesty policy of the course and undermines the learning process. If you genuinely want to learn programming, I encourage you to engage with the problem sets, seek help, and understand the concepts rather than copying solutions.
+
+What you can do with these solutions is to seek the understanding of the why of my implementation logic, or specifics of how to use a particular function and see how it could add to yours.
+
+Remember, the true value lies in understanding and applying the material, not in obtaining a quick answer. Let's learn together! 🌟
+
 ## Table of Contents
 
 - [About CS50p](#about-cs50p)
