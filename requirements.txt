@@ -2,7 +2,7 @@ emoji==2.10.1
 english_words==2.0.1
 fpdf==1.7.2
 inflect==7.0.0
-Pillow==10.2.0
+Pillow==10.3.0
 pyfiglet==1.0.2
 pytest==8.1.1
 Requests==2.31.0
