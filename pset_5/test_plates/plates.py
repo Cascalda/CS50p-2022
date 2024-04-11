@@ -1,17 +1,16 @@
-"""Vanity Plates and whether they are valid."""
+"""Vanity Plates and whether they are valid"""
 
 from string import punctuation
 
 
-def is_valid(plate_char: str) -> bool:
-    """Checks validity of vanity plates."""
+def is_valid_plate(plate_char: str) -> bool:
+    """Checks validity of vanity plates"""
 
+    # Checks validity in this particular order
     validity_checks = {
-        "First 2 Characters": plate_char[0:2].isalpha(),
         "Length": 2 <= len(plate_char) <= 6,
-        "Special Characters": not (
-            set(plate_char) & set(punctuation)
-        ),  # Vanity plates don't contain special characters
+        "First 2 Characters": plate_char[0:2].isalpha(),
+        "Special Characters": set(plate_char).isdisjoint(punctuation),
         "Number Conditions": num_condition_check(plate_char),
     }
 
@@ -19,24 +18,25 @@ def is_valid(plate_char: str) -> bool:
 
 
 def num_condition_check(plate_to_check: str) -> bool:
-    """To validate conditions for numbers in the plate."""
+    """To validate conditions for numbers in the plate"""
 
     for index, char in enumerate(plate_to_check):
         if char.isdigit():
-            if int(char) == 0:  # First digit is 0
+            if int(char) == 0:  # first digit is 0
                 return False
 
-            # All succeeding characters are digits
-            return plate_to_check[index:].isdigit()
+            return plate_to_check[
+                index:
+            ].isdigit()  # all succeeding characters are digits
 
-    return True
+    return True  # no digits
 
 
-def main() -> None:
-    """Interface to control all other functions."""
+def main():
+    """Interface to control all other functions"""
 
     plate = input("Plate: ")
-    if is_valid(plate):
+    if is_valid_plate(plate):
         print("Valid")
     else:
         print("Invalid")
