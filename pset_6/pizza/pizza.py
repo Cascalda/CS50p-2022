@@ -1,11 +1,10 @@
 """Prints out the pretty menu of regular and sicilian pizzas."""
 
-from csv import DictReader
-from io import TextIOWrapper
 import sys
+from csv import DictReader
+from typing import IO
 
 from tabulate import tabulate
-
 
 FILE_TO_OPEN = sys.argv[1]
 DESIRED_FILE_TYPE = "csv"
@@ -24,7 +23,7 @@ def format_check(file) -> None:
         sys.exit(f"Not a Python file. Perhaps missing '.{DESIRED_FILE_TYPE}'?")
 
 
-def prettify_menu(file: TextIOWrapper) -> str:
+def prettify_menu(file: IO[str]) -> str:
     """Make the format of a csv file prettier."""
 
     menu = DictReader(file)

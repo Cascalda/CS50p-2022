@@ -1,7 +1,7 @@
 """Calculates the number of lines in a file."""
 
-from io import TextIOWrapper
 import sys
+from typing import IO
 
 FILE_TO_OPEN = sys.argv[1]
 DESIRED_FILE_TYPE = "py"
@@ -26,7 +26,7 @@ def is_empty_line(line):
     return any(empty_line_condition)
 
 
-def get_lines(file: TextIOWrapper) -> int:
+def get_lines(file: IO[str]) -> int:
     """Get the number of lines in a file."""
     lines = [_.strip(" \n") for _ in file.readlines()]
     lines_total = len(lines)
