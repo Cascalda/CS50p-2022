@@ -1,8 +1,8 @@
 """Make a cleaner version of the files containing first and last names."""
 
-from csv import DictReader, DictWriter
-from io import TextIOWrapper
 import sys
+from csv import DictReader, DictWriter
+from typing import IO
 
 FILES_TO_OPEN = sys.argv[1:]
 DESIRED_FILE_TYPE = "csv"
@@ -22,7 +22,7 @@ def format_check(files: list[str]) -> None:
             sys.exit(f"Not a csv file. Perhaps missing '.{DESIRED_FILE_TYPE}'?")
 
 
-def scourgify(csv_in: TextIOWrapper, csv_out: TextIOWrapper) -> None:
+def scourgify(csv_in: IO[str], csv_out: IO[str]) -> None:
     """Make the format of a csv file prettier."""
     file_in = DictReader(csv_in)
     fieldnames = ("first", "last", "house")
