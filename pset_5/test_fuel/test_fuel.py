@@ -1,10 +1,13 @@
 """Tests fuel.py from pset_3."""
 
-from fuel import convert, gauge
 import pytest
 
+from fuel import convert, gauge
 
-# pylint: disable=C0116
+
+# pylint: disable=missing-function-docstring
+
+
 def test_convert():
     fractions_percentages = (
         ("3/7", 43),

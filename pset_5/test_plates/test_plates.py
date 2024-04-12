@@ -3,7 +3,6 @@
 from plates import is_valid_plate
 import pytest
 
-# pylint: disable=C0116
 test_data = [
     (
         "alphabet",
@@ -36,6 +35,9 @@ test_data = [
 ]
 
 
+# pylint: disable=missing-function-docstring
+
+
 @pytest.mark.parametrize(
     "expected_result, value",
     (
@@ -46,7 +48,6 @@ test_data = [
     ),
 )
 def test_validation_categorized(expected_result: bool, value: str):
-    """Test validation function with categorized test cases."""
     assert is_valid_plate(value) is expected_result
 
 
