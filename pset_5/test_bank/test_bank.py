@@ -1,8 +1,10 @@
 """Tests bank.py from pset_1."""
 
-# pylint: disable=C0116
-from bank import value
 import pytest
+
+from bank import value
+
+# pylint: disable=C0116
 
 
 def test_hello():
