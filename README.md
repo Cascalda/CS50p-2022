@@ -4,11 +4,25 @@ Welcome to my CS50p repository! This repository contains projects and assignment
 
 # 🚫 Academic Honesty Notice
 
-These solutions are provided for educational purposes only. They are not intended to be used or submitted as your own work. Cheating violates the Academic Honesty policy of the course and undermines the learning process. If you genuinely want to learn programming, I encourage you to engage with the problem sets, seek help, and understand the concepts rather than copying solutions.
+These solutions are provided for educational purposes only. They are not intended to be used or submitted as your own work. Cheating violates the Academic Honesty policy of the course and undermines the learning process. Programming concepts can be challenging, but there are many legitimate ways to use this resource to improve your skills.
 
-What you can do with these solutions is to seek the understanding of the why of my implementation logic, or specifics of how to use a particular function and see how it could add to yours.
+## Here's what you can do to utilize this resource effectively:
 
-Remember, the true value lies in understanding and applying the material, not in obtaining a quick answer. Let's learn together! 🌟
+- **Understand the Concept:** Before diving into the solutions, make sure you understand the problem statement thoroughly. Review your course materials or consult with your instructor if unsure.
+
+- **Attempt the Problem:** Try solving the problem on your own first. Even if you don't succeed initially, the process of attempting it will help reinforce your understanding and highlight areas where you might need more practice.
+
+- **Analyse the Solution:** Compare your approach to the provided solution. Pay close attention to the logic and techniques used. Try to identify similarities and differences between your solution and this one.
+
+- **Learn from the Solution:** Instead of simply copying the solution, focus on understanding why certain decisions were made and how they contribute to solving the problem. Look for patterns, algorithms, or design principles that you can apply to similar problems in the future.
+
+- **Modify and Experiment:** After understanding the solution, try modifying it or experimenting with different inputs to see how it behaves. This will deepen your understanding and help you gain confidence in applying the concepts to new scenarios.
+
+- **Ask Questions:** If there are parts of the solution that you don't understand, don't hesitate to ask questions. Seek clarification from your instructor, classmates, or online communities. Asking questions is an important part of the learning process.
+
+- **Practice Regularly:** Programming is a skill that improves with practice. Make use of the provided solutions as learning aids, but also continue to challenge yourself with new problems and projects. The more you practice, the more proficient you'll become.
+
+Remember, the goal is not just to obtain correct answers but to develop a deep understanding of the underlying concepts and problem-solving techniques. Happy learning! 🚀
 
 ## Table of Contents
 
