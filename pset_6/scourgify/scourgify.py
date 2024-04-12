@@ -1,59 +1,61 @@
 """Make a cleaner version of the files containing first and last names."""
 
-from sys import argv, exit as sys_exit
 from csv import DictReader, DictWriter
+from io import TextIOWrapper
+import sys
+
+FILES_TO_OPEN = sys.argv[1:]
+DESIRED_FILE_TYPE = "csv"
+DESIRED_ARG_NUM = 3
 
 
-def format_check() -> None:
+def format_check(files: list[str]) -> None:
     """Check the format of command line."""
-    desired_arg_num = 3
 
-    if len(argv) < desired_arg_num:
-        sys_exit("Too few command-line arguments")
-    elif len(argv) > desired_arg_num:
-        sys_exit("Too many command-line arguments")
+    if len(sys.argv) < DESIRED_ARG_NUM:
+        sys.exit("Too few command-line arguments")
+    elif len(sys.argv) > DESIRED_ARG_NUM:
+        sys.exit("Too many command-line arguments")
 
-    files_to_open = argv[1:]
-    desired_file_type = "csv"
-
-    for file in files_to_open:
-        if not file.endswith(f".{desired_file_type}"):
-            sys_exit(f"Not a csv file. Perhaps missing '.{desired_file_type}'?")
+    for file in files:
+        if not file.endswith(f".{DESIRED_FILE_TYPE}"):
+            sys.exit(f"Not a csv file. Perhaps missing '.{DESIRED_FILE_TYPE}'?")
 
 
-def scourgify(file_in: str, file_out: str) -> None:
+def scourgify(csv_in: TextIOWrapper, csv_out: TextIOWrapper) -> None:
     """Make the format of a csv file prettier."""
-    with (
-        open(file_in, mode="r", encoding="utf-8") as csv_in,
-        open(file_out, mode="w", encoding="utf-8") as csv_out,
-    ):
-        csv_in = DictReader(csv_in)
-        fieldnames = ("first", "last", "house")
-        csv_out = DictWriter(csv_out, fieldnames=fieldnames)
+    file_in = DictReader(csv_in)
+    fieldnames = ("first", "last", "house")
+    file_out = DictWriter(csv_out, fieldnames=fieldnames)
+    file_out.writeheader()
 
-        csv_out.writeheader()
-        for row in csv_in:
-            last_name, first_name = row["name"].split(", ")
-            house = row["house"]
-            csv_out.writerow(
-                {
-                    "first": first_name,
-                    "last": last_name,
-                    "house": house,
-                }
-            )
+    for row in file_in:
+        last_name, first_name = row["name"].split(", ")
+        house = row["house"]
+        file_out.writerow(
+            {
+                "first": first_name,
+                "last": last_name,
+                "house": house,
+            }
+        )
 
 
 def main() -> None:
     """Interface to control all other functions."""
-    format_check()
+    format_check(FILES_TO_OPEN)
 
     try:
-        _, input_file, output_file = argv[:3]
-    except FileNotFoundError:
-        sys_exit("File does not exist")
+        file_in, file_out = FILES_TO_OPEN
 
-    scourgify(input_file, output_file)
+        with (
+            open(file_in, mode="r", encoding="utf-8") as csv_in,
+            open(file_out, mode="w", encoding="utf-8") as csv_out,
+        ):
+            scourgify(csv_in, csv_out)
+
+    except FileNotFoundError:
+        sys.exit("File does not exist")
 
 
 if __name__ == "__main__":
