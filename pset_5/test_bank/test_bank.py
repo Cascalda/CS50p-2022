@@ -4,7 +4,7 @@ import pytest
 
 from bank import value
 
-# pylint: disable=C0116
+# pylint: disable=missing-function-docstring
 
 
 def test_hello():

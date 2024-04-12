@@ -1,8 +1,10 @@
 """Tests twttr.py from pset_2."""
 
-# pylint: disable=C0116
-from twttr import shorten
 import pytest
+
+from twttr import shorten
+
+# pylint: disable=missing-function-docstring
 
 
 def test_empty_input():
