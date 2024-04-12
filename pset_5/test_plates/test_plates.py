@@ -1,6 +1,6 @@
 """Tests plates.py from pset_2."""
 
-from plates import is_valid
+from plates import is_valid_plate
 import pytest
 
 # pylint: disable=C0116
@@ -47,7 +47,7 @@ test_data = [
 )
 def test_validation_categorized(expected_result: bool, value: str):
     """Test validation function with categorized test cases."""
-    assert is_valid(value) is expected_result
+    assert is_valid_plate(value) is expected_result
 
 
 if __name__ == "__main__":
