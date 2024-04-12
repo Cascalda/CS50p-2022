@@ -1,7 +1,14 @@
 """Make a cleaner version of the files containing first and last names."""
 
-from sys import argv, exit as sys_exit
+import sys
+
 from PIL import Image, ImageOps
+
+FILES_TO_OPEN = sys.argv[1:]
+GIVEN_FILE_TYPES = {file.rsplit(".", maxsplit=1)[-1] for file in FILES_TO_OPEN}
+DESIRED_FILE_TYPES = {"jpg", "jpeg", "png"}
+DESIRED_ARG_NUM = 3
+OVERLAY_FILE_NAME = "shirt.png"
 
 
 def format_check() -> None:
@@ -12,36 +19,30 @@ def format_check() -> None:
 
 def length_check() -> None:
     """Check for invalid length of command line arguments."""
-    desired_arg_num = 3
-    if len(argv) < desired_arg_num:
-        sys_exit("Too few command-line arguments")
+    if len(sys.argv) < DESIRED_ARG_NUM:
+        sys.exit("Too few command-line arguments")
 
-    if len(argv) > desired_arg_num:
-        sys_exit("Too many command-line arguments")
+    if len(sys.argv) > DESIRED_ARG_NUM:
+        sys.exit("Too many command-line arguments")
 
 
 def file_format_check() -> None:
     """Check for invalid file formats."""
-    files_to_open = argv[1:]
-    given_file_types = {file.rsplit(".", maxsplit=1)[-1] for file in files_to_open}
-    desired_file_types = {"jpg", "jpeg", "png"}
 
-    if given_file_types > desired_file_types:
-        sys_exit("Not a valid file")
+    if GIVEN_FILE_TYPES > DESIRED_FILE_TYPES:
+        sys.exit("Not a valid file")
 
-    if len(given_file_types) > 1:
-        sys_exit("Input and output have different extensions")
+    if len(GIVEN_FILE_TYPES) > 1:
+        sys.exit("Input and output have different extensions")
 
 
-def put_shirt_on(file_in: str, file_out: str) -> None:
+# Unfortunately, I can't provide a type for overlay and background
+# Both Image class and Image module have the same name, so there is conflict
+def put_shirt_on(overlay, background, file_out: str) -> None:
     """Make the format of a csv file prettier."""
-    with (
-        Image.open("shirt.png") as overlay,
-        Image.open(file_in) as background,
-    ):
-        in_edit = ImageOps.fit(background, overlay.size)
-        in_edit.paste(overlay, mask=overlay)
-        in_edit.save(file_out)
+    in_edit = ImageOps.fit(background, overlay.size)
+    in_edit.paste(overlay, mask=overlay)
+    in_edit.save(file_out)
 
 
 def main() -> None:
@@ -49,11 +50,16 @@ def main() -> None:
     format_check()
 
     try:
-        _, input_file, output_file = argv[:3]
-    except FileNotFoundError:
-        sys_exit("File does not exist")
+        file_in, file_out = FILES_TO_OPEN
 
-    put_shirt_on(input_file, output_file)
+        with (
+            Image.open(OVERLAY_FILE_NAME) as overlay,
+            Image.open(file_in) as background,
+        ):
+            put_shirt_on(overlay, background, file_out)
+
+    except FileNotFoundError:
+        sys.exit("File does not exist")
 
 
 if __name__ == "__main__":
