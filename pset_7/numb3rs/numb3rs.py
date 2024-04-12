@@ -33,5 +33,4 @@ def main() -> bool:
 
 
 if __name__ == "__main__":
-    RESULT = main()
-    print(RESULT)
+    print(main())
