@@ -5,15 +5,15 @@ import sys
 
 FILE_TO_OPEN = sys.argv[1]
 DESIRED_FILE_TYPE = "py"
+DESIRED_ARG_TYPE = 2
 
 
 def format_check(file) -> None:
     """Check the format of command line."""
-    desired_arg_num = 2
 
-    if len(sys.argv) < desired_arg_num:
+    if len(sys.argv) < DESIRED_ARG_TYPE:
         sys.exit("Too few command-line arguments")
-    elif len(sys.argv) > desired_arg_num:
+    elif len(sys.argv) > DESIRED_ARG_TYPE:
         sys.exit("Too many command-line arguments")
 
     if not file.endswith(f".{DESIRED_FILE_TYPE}"):

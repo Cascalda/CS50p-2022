@@ -9,15 +9,15 @@ from tabulate import tabulate
 
 FILE_TO_OPEN = sys.argv[1]
 DESIRED_FILE_TYPE = "csv"
+DESIRED_ARG_NUM = 2
 
 
 def format_check(file) -> None:
     """Check the format of command line."""
-    desired_arg_num = 2
 
-    if len(sys.argv) < desired_arg_num:
+    if len(sys.argv) < DESIRED_ARG_NUM:
         sys.exit("Too few command-line arguments")
-    elif len(sys.argv) > desired_arg_num:
+    elif len(sys.argv) > DESIRED_ARG_NUM:
         sys.exit("Too many command-line arguments")
 
     if not file.endswith(f".{DESIRED_FILE_TYPE}"):
@@ -26,6 +26,7 @@ def format_check(file) -> None:
 
 def prettify_menu(file: TextIOWrapper) -> str:
     """Make the format of a csv file prettier."""
+
     menu = DictReader(file)
     pretty_menu = tabulate(menu, headers="keys", tablefmt="grid")
 
