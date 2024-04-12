@@ -8,10 +8,10 @@ def parse(line: str) -> str | None:
     if iframe_match := re.search(
         r"""
         <iframe\s+src="  # Match the iframe tag with src attribute
-            (          # Capturing group 1: Full URL
-                https?://(?:www.)?youtube.com/embed/  # YouTube embed URL
-                ([\w-]{11})  # Capturing group 2: Video ID
-            )
+        (  # Full url
+             https?://(?:www.)?youtube.com/embed/  # YouTube embed URL
+            ([\w-]{11})  # Video ID
+        )
         "></iframe>
         """,
         line,
