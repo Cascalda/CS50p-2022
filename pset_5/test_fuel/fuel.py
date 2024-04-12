@@ -1,41 +1,48 @@
-"""Gives fuel gauge fractions in percents"""
+"""Gives fuel gauge fractions in percents."""
 
 
-def convert(fraction: str) -> int:
-    """Converts fuel gauge to percentages"""
-    try:
-        numerator, denominator = (int(num) for num in fraction.split("/"))
+def convert(fraction: str) -> float:
+    """Converts fuel gauge to percentages."""
 
-        if denominator == 0:
-            raise ZeroDivisionError("Division by 0 is left undefined")
-        if numerator > denominator:
-            raise ValueError("Only proper fractions are accepted")
+    numerator, denominator = [int(num) for num in fraction.split("/")]
+    if denominator == 0:
+        raise ZeroDivisionError("Division by 0 is undefinable")
 
-        percentage = round((numerator / denominator) * 100)
-        return percentage
+    if numerator > denominator:
+        raise RuntimeError("Only proper fractions are accepted")
 
-    except (ValueError, ZeroDivisionError) as e:
-        print(e)
-        raise
+    percent = (numerator / denominator) * 100
+    return percent
 
 
 def gauge(percentage: int) -> str:
-    """Determines the gauge reading"""
+    """Determines the gauge reading."""
 
     if percentage <= 1:
         return "E"
     if percentage >= 99:
         return "F"
 
-    return f"{percentage}%"
+    return f"{percentage:.0f}%"
 
 
 def main() -> None:
-    """Interface to control all other functions"""
-    prompt = input("Fraction: ")
-    percentage = convert(prompt)
-    indication = gauge(percentage)
-    print(indication)
+    """Interface to control all other functions."""
+
+    while True:
+        obtained_fuel_gauge = input("Fraction: ")
+
+        try:
+            calculated_percentage = convert(obtained_fuel_gauge)
+        except ValueError:
+            print("Only fractions are accepted")
+        except (ZeroDivisionError, RuntimeError) as e:
+            print(e)
+        else:
+            break
+
+    result = gauge(int(calculated_percentage))
+    print(result)
 
 
 if __name__ == "__main__":
