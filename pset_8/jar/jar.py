@@ -37,8 +37,8 @@ class Jar:
 
     @capacity.setter
     def capacity(self, capacity_value: int) -> None:
-        if not (isinstance(capacity_value, int) or capacity_value < 0):
-            raise ValueError("Capacity must be a non_negative integer.")
+        if not (isinstance(capacity_value, int) or capacity_value <= 0):
+            raise ValueError("Capacity must be a non-negative integer.")
 
         self._capacity = capacity_value
 
@@ -49,7 +49,7 @@ class Jar:
 
     @size.setter
     def size(self, size_value: int) -> None:
-        if not (isinstance(size_value, int) or 0 < size_value < self._capacity):
+        if not (isinstance(size_value, int) or 0 <= size_value < self._capacity):
             raise ValueError("Size must be non-negative integer smaller than capacity.")
 
         self._size = size_value

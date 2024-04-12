@@ -48,7 +48,7 @@ def test_deposit():
     assert jar.size == deposit_value
 
     with pytest.raises(ValueError, match="Not enough capacity."):
-        invalid_deposit = (capacity - deposit_value) + OVERFLOW_MODIFIER
+        invalid_deposit = abs(capacity - deposit_value) + OVERFLOW_MODIFIER
         jar.deposit(invalid_deposit)
 
 
@@ -65,7 +65,7 @@ def test_withdraw():
     assert jar.size == (size_value - withdrawal_value)
 
     with pytest.raises(ValueError, match="Not enough cookies to withdraw."):
-        invalid_withdrawal = (capacity - withdrawal_value) + OVERFLOW_MODIFIER
+        invalid_withdrawal = abs(capacity - withdrawal_value) + OVERFLOW_MODIFIER
         jar.withdraw(invalid_withdrawal)
 
 
