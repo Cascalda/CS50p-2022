@@ -3,7 +3,8 @@
 
 def value(greeting: str) -> int:
     """Money for greeting."""
-    greeting = greeting.lower()
+    greeting = greeting.lower().strip()
+
     if greeting.startswith("hello"):
         return 0
     if greeting.startswith("h"):
