@@ -1,13 +1,14 @@
 """Removes vowels in words"""
 
+VOWELS = ("a", "e", "i", "o", "u", "A", "E", "I", "O", "U")
+
 
 def vowel_remove(characters: str) -> str:
     """Removes vowels like twttr does"""
-    vowels = ("a", "e", "i", "o", "u", "A", "E", "I", "O", "U")
 
     shortened = ""
     for char in characters:
-        if char not in vowels:
+        if char not in VOWELS:
             shortened += char
 
     return shortened
