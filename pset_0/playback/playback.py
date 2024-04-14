@@ -9,8 +9,7 @@ def play_it_back() -> str:
 
 def main() -> None:
     """Interface to control all other functions."""
-    result = play_it_back()
-    print(result)
+    print(play_it_back())
 
 
 if __name__ == "__main__":
