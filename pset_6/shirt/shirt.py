@@ -11,12 +11,6 @@ DESIRED_ARG_NUM = 3
 OVERLAY_FILE_NAME = "shirt.png"
 
 
-def format_check() -> None:
-    """Check the format of command line."""
-    length_check()
-    file_format_check()
-
-
 def length_check() -> None:
     """Check for invalid length of command line arguments."""
     if len(sys.argv) < DESIRED_ARG_NUM:
@@ -34,6 +28,12 @@ def file_format_check() -> None:
 
     if len(GIVEN_FILE_TYPES) > 1:
         sys.exit("Input and output have different extensions")
+
+
+def format_check() -> None:
+    """Check the format of command line."""
+    length_check()
+    file_format_check()
 
 
 # Unfortunately, I can't provide a type for overlay and background
