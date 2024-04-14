@@ -1,4 +1,5 @@
 """Orientate shirtificate.png."""
+
 from fpdf import FPDF
 
 IMAGE_PATH = "./shirtificate.png"
@@ -21,25 +22,26 @@ class MyPDF(FPDF):
     def header(self):
         """Sets the header of the pdf."""
         self.ln(25)
-        self.set_font(family='Arial', size=55)
-        self.cell(w=0, txt=PDF_TEXT, align='C')
+        self.set_font(family="Arial", size=55)
+        self.cell(w=0, txt=PDF_TEXT, align="C")
         self.ln(15)
 
     def add_shirt(self) -> None:
         """Add the shirt image."""
-        self.image(name=IMAGE_PATH, x=SHIRT_X, y=SHIRT_Y,
-                   w=SHIRT_W, h=SHIRT_H, type='PNG')
+        self.image(
+            name=IMAGE_PATH, x=SHIRT_X, y=SHIRT_Y, w=SHIRT_W, h=SHIRT_H, type="PNG"
+        )
 
     def add_shirtificate_slogan(self) -> None:
         """Adds the certificate of completion slogan on the shirt."""
-        self.set_font(family='Arial', size=30)
+        self.set_font(family="Arial", size=30)
         self.set_text_color(255, 255, 255)
         self.cell(w=SHIRT_TEXT_W, h=SHIRT_TEXT_H, txt=SHIRT_TEXT, align="C")
 
 
 def main() -> None:
     """Interface that controls all other functions."""
-    pdf = MyPDF(orientation='portrait', format='a4')
+    pdf = MyPDF(orientation="portrait", format="a4")
     pdf.add_page()
     pdf.add_shirt()
     pdf.add_shirtificate_slogan()

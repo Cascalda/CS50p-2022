@@ -1,9 +1,9 @@
 """Convert ISO 8601 formatted dates to words."""
 
-from datetime import date
 import sys
-import inflect
+from datetime import date
 
+import inflect
 
 inflect = inflect.engine()
 number_to_words = inflect.number_to_words
