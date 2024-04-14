@@ -4,8 +4,8 @@
 def convert(time: str) -> float:
     "Converts time to hours."
 
-    hour_minute_pair, *suffix = time.split(" ")
-    hour, minute = hour_minute_pair.split(":")
+    others, *suffix = time.split(" ")
+    hour, minute = others.split(":")
     hour, minute = int(hour), int(minute)
 
     if "p.m." in suffix:
