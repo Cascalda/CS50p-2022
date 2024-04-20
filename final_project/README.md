@@ -3,6 +3,9 @@
 ### Description
 A simple terminal-based password generator that gives you a fair bit of customisation. You can also make a passphrase with this one.
 
+### Getting Started
+To get started, run [`project.py`](project.py)
+
 ## Contains
 ### [**Interface**](project.py)
 Where you can call the password generators, to provide a password/passphrase for your use.
