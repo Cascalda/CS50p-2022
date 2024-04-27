@@ -1,9 +1,11 @@
 """Tests numb3rs.py."""
+
 from numb3rs import validate
 import pytest
 
 
 # pylint: disable=missing-function-docstring
+
 
 def test_valid():
     valid_cases = (r"127.0.0.1", r"8.8.8.8", r"12.12.120.102")

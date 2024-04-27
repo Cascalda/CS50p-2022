@@ -28,6 +28,7 @@ invalid_cases = [
 
 # pylint: disable=missing-function-docstring
 
+
 @pytest.mark.parametrize("testcase, expected_result", valid_cases)
 def test_valid_cases(testcase, expected_result):
     assert convert(testcase) == expected_result

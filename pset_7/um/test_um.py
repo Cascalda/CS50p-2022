@@ -13,6 +13,7 @@ testcases = [
 
 # pylint: disable=missing-function-docstring
 
+
 @pytest.mark.parametrize("input_text, expected_result", testcases)
 def test_count(input_text: str, expected_result: int) -> None:
     assert count(input_text) == expected_result

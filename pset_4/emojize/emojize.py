@@ -1,4 +1,5 @@
 """Converts code into emojis."""
+
 import emoji
 
 

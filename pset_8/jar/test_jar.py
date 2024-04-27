@@ -9,6 +9,7 @@ OVERFLOW_MODIFIER = 999
 
 # pylint: disable=missing-function-docstring
 
+
 def test_init_sets_default_capacity():
     jar = Jar()
     default_capacity = 12

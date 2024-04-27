@@ -1,5 +1,5 @@
 """Checks your answer to the question what is the answer to everything.
-    - A reference to Hitchhiker's Guide to the Galaxy
+- A reference to Hitchhiker's Guide to the Galaxy
 """
 
 ANSWERS = ("42", "forty-two", "forty two")
