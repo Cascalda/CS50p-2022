@@ -1,7 +1,9 @@
 # Remarks
+
 This project took months to make despite being a simple password generator. Most of the work done was through refactoring to make the code more readable and maintainable, as well as providing good user experience via the terminal.
 
 ## Lessons Learnt
+
 - `Type annotations` can really help one spot bugs in intended program flow, especially as python is dynamically typed.
 - Organising functions in the `logical order of dependence` really helps build a reliable mental model of how everything works, with reliable speed.
 - Spliting workload into `modular functions` makes it easier to do isolated testing, and helps mark out logical steps to the end goal.
@@ -13,5 +15,6 @@ This project took months to make despite being a simple password generator. Most
 - Giving `clear prompts` and `instructions` to users help improve user experience
 
 ## Further Research
+
 - Parallelism  (Attempted to use threading to implement the quitting feature but I could not make it work)
 - Virtual Environments

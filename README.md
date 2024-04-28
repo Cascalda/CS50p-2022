@@ -4,11 +4,11 @@ Welcome to my CS50p repository! This repository contains projects and assignment
 
 ![CS50P Certificate](https://github.com/Cascalda/CS50p-2022/assets/111849193/48f13025-2d7b-4365-af18-069615646628)
 
-# 🚫 Academic Honesty Notice
+## 🚫 Academic Honesty Notice
 
 These solutions are provided for educational purposes only. They are not intended to be used or submitted as your own work. Cheating violates the Academic Honesty policy of the course and undermines the learning process. Programming concepts can be challenging, but there are many legitimate ways to use this resource to improve your skills.
 
-## Here's what you can do to utilize this resource effectively:
+## Here's what you can do to utilize this resource effectively
 
 - **Understand the Concept:** Before diving into the solutions, make sure you understand the problem statement thoroughly. Review your course materials or consult with your instructor if unsure.
 
