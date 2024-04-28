@@ -12,6 +12,6 @@ This project took months to make despite being a simple password generator. Most
 - Use of `custom Exceptions` to handle the specific exception in my program, in this case: quitting prematurely
 - Giving `clear prompts` and `instructions` to users help improve user experience
 
-## Further research:
+## Further Research
 - Parallelism  (Attempted to use threading to implement the quitting feature but I could not make it work)
 - Virtual Environments
