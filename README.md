@@ -2,7 +2,7 @@
 
 Welcome to my CS50p repository! This repository contains projects and assignments completed as part of the CS50 Introduction to Programming with Python course.
 
-![CS50P Certificate.pdf](https://github.com/Cascalda/CS50p-2022/files/15236563/CS50P.Certificate.pdf)
+![CS50P Certificate](https://github.com/Cascalda/CS50p-2022/assets/111849193/896a8e26-3776-4d91-93cc-3af46a14873d)
 
 ## 🚫 Academic Honesty Notice
 
